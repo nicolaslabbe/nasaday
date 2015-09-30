@@ -1,0 +1,25 @@
+{
+    "appKeys": {
+        "KEY_IMG": 0
+    },
+    "capabilities": [
+        ""
+    ],
+    "companyName": "nicolas.labbe@adfab.fr",
+    "longName": "nasaday",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "nasaday",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "10738d52-21b5-4904-b135-d38af448f153",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
