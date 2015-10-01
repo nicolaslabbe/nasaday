@@ -1,8 +1,10 @@
 #include <pebble.h>
+#include "netdownload.h"
 
 Window *g_window;
 TextLayer *g_text_layer;
 char img_buffer[128];
+
 enum {
   KEY_IMG = 0,
 };
@@ -22,6 +24,7 @@ void process_tuple(Tuple *t)
       printf("string_value = %s", string_value);
 			snprintf(img_buffer, sizeof(string_value), "%s", string_value);
       text_layer_set_text(g_text_layer, (char*) &img_buffer); // (char*) &img_buffer
+      netdownload_request(string_value);
       break;
   }
 }
