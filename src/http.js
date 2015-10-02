@@ -82,14 +82,15 @@ function downloadBinaryResource(imageURL, callback, errorCallback) {
 
 Pebble.addEventListener("appmessage", function(e) {
   console.log("Got message: " + JSON.stringify(e));
-
-  if ('NETDL_URL' in e.payload) {
+  
+  console.log(e.payload['NETDL_URL']);
+  if ('NETDL_URL' in e.payload && e.payload['NETDL_URL'] != '') {
     if (transferInProgress === false) {
       transferInProgress = true;
       downloadBinaryResource(e.payload['NETDL_URL'], function(bytes) {
         transferImageBytes(bytes, e.payload['NETDL_CHUNK_SIZE'],
           function() { console.log("Done!"); transferInProgress = false; },
-          function(e) { console.log("Failed! " + e); transferInProgress = false; }
+          function(e) { console.log("Failed! " + JSON.stringify(e)); transferInProgress = false; }
         );
       },
       function(e) {
@@ -142,6 +143,7 @@ var getNasa = function() {
 
 Pebble.addEventListener("ready",
   function(e) {
+    console.log("NetDownload JS Ready");
     getNasa();
   }
 );
